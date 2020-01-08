@@ -20,7 +20,7 @@
     export default {
         data() {
             return {
-                tableData:[]
+                tableData:[],
             }
         },
         created(){
@@ -28,7 +28,7 @@
         },
         methods: {
             async getList() {
-                const res= await this.$http.get('categories')
+                const res= await this.$http.get('rest/categories')
                 this.tableData = res.data
             },
             async remove(row){
@@ -38,7 +38,7 @@
                     type: 'warning',
                     center: true
                     }).then(async () => {
-                    const res = await this.$http.delete(`categories/${row._id}`)
+                    const res = await this.$http.delete(`rest/categories/${row._id}`)
                     if(res.data){
                         this.$message({
                             type:'success',
